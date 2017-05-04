@@ -1,0 +1,44 @@
+# vim: set ai expandtab sw=2 ts=2:
+
+services:
+  demo:
+  tms:
+    use_grid_names: true
+    origin: 'nw'
+  kml:
+      use_grid_names: true
+  wms:
+    md:
+      title: MapProxy WMS Proxy
+      abstract: This is a minimal MapProxy example.
+
+layers:
+  - name: nvdb
+    title: NVDB
+    sources: [nvdb_ms_cache]
+
+caches:
+  nvdb_ms_cache:
+    grids: [webmercator]
+    sources: [nvdb_ms]
+    disable_storage: true
+
+sources:
+  nvdb_ms:
+    type: mapserver
+    req:
+      layers: speeds,cycleways
+      map: NVDB.map
+      transparent: true
+    supported_srs: ['EPSG:3857']
+    supported_formats: ['image/png']
+    coverage:
+      bbox: [269646.879000, 6133589.947000, 917085.660000, 7654982.170000]
+      srs: 'EPSG:3006'
+    mapserver:
+      binary: /usr/bin/mapserv
+      working_dir: .
+
+grids:
+  webmercator:
+    base: GLOBAL_WEBMERCATOR
