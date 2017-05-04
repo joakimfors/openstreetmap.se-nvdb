@@ -14,7 +14,7 @@ MAP
   WEB
     METADATA
       "wms_title" "NVDB"
-      "wms_onlineresource" "http://openstreetmap.se/wms/ek?"
+      "wms_onlineresource" "http://mapproxy.openstreetmap.se/service?"
       "wms_enable_request" "*"
     END
   END
