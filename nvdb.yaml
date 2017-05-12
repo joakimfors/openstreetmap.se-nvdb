@@ -13,21 +13,42 @@ services:
       abstract: This is a minimal MapProxy example.
 
 layers:
-  - name: nvdb
-    title: NVDB
-    sources: [nvdb_ms_cache]
+  - name: nvdb_speeds
+    title: NVDB speeds
+    sources: [nvdb_speeds_ms_cache]
+  - name: nvdb_speeds_alt
+    title: NVDB speeds alt
+    sources: [nvdb_speeds_alt_ms_cache]
 
 caches:
-  nvdb_ms_cache:
+  nvdb_speeds_ms_cache:
     grids: [webmercator]
-    sources: [nvdb_ms]
+    sources: [nvdb_speeds_ms]
+    disable_storage: true
+  nvdb_speeds_alt_ms_cache:
+    grids: [webmercator]
+    sources: [nvdb_speeds_alt_ms]
     disable_storage: true
 
 sources:
-  nvdb_ms:
+  nvdb_speeds_ms:
     type: mapserver
     req:
       layers: speeds,cycleways
+      map: NVDB.map
+      transparent: true
+    supported_srs: ['EPSG:3857']
+    supported_formats: ['image/png']
+    coverage:
+      bbox: [269646.879000, 6133589.947000, 917085.660000, 7654982.170000]
+      srs: 'EPSG:3006'
+    mapserver:
+      binary: /usr/bin/mapserv
+      working_dir: .
+  nvdb_speeds_alt_ms:
+    type: mapserver
+    req:
+      layers: speeds_alt,cycleways
       map: NVDB.map
       transparent: true
     supported_srs: ['EPSG:3857']
