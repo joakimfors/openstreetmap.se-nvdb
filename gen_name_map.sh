@@ -9,7 +9,7 @@
 # Requires ogrinfo.
 
 
-out=/dev/stdout
+out="nvdb_names.map"
 
 cat > "${out}" <<EOF
 MAP
