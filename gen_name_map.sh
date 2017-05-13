@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Instructions:
+# - Download "Vägdata > Kommuner/Län Shape" shape packages from
+#   Lastkajen (https://lastkajen.trafikverket.se/107_OA_FileStorage/Default.aspx)
+# - Extract them in subdirectories relative to this script
+# - Run the script and it will generate a Mapserver map file
+#
+# Requires ogrinfo.
+
+
 out=/dev/stdout
 
 cat > "${out}" <<EOF
@@ -38,10 +47,8 @@ EOF
 names=""
 
 for shp in */*NVDB*namn.shp; do
-  #echo ${shp}
   name=$(ogrinfo -ro -al -so "${shp}" | grep "Layer name:" | sed -e 's/Layer name: //')
   extent=$(ogrinfo -ro -al -so "${shp}" | grep "Extent:" | sed -e 's/Extent: //' -e 's/[\(\),-]//g')
-  #echo ${name} ${extent}
   cat > "${out}" <<EOF
   LAYER
     NAME      "${name}"
@@ -88,7 +95,6 @@ for shp in */*NVDB*namn.shp; do
   END
 EOF
   names="${name},${names}"
-  #break
 done
 
 cat >> "$out" <<EOF
