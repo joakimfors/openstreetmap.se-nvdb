@@ -19,6 +19,9 @@ layers:
   - name: nvdb_speeds_alt
     title: NVDB speeds alt
     sources: [nvdb_speeds_alt_ms_cache]
+  - name: nvdb_names
+    title: NVDB names
+    sources: [nvdb_names_ms_cache]
 
 caches:
   nvdb_speeds_ms_cache:
@@ -28,6 +31,10 @@ caches:
   nvdb_speeds_alt_ms_cache:
     grids: [webmercator]
     sources: [nvdb_speeds_alt_ms]
+    disable_storage: true
+  nvdb_names_ms_cache:
+    grids: [webmercator]
+    sources: [nvdb_names_ms]
     disable_storage: true
 
 sources:
@@ -50,6 +57,20 @@ sources:
     req:
       layers: speeds_alt,cycleways
       map: NVDB.map
+      transparent: true
+    supported_srs: ['EPSG:3857']
+    supported_formats: ['image/png']
+    coverage:
+      bbox: [269646.879000, 6133589.947000, 917085.660000, 7654982.170000]
+      srs: 'EPSG:3006'
+    mapserver:
+      binary: /usr/bin/mapserv
+      working_dir: .
+  nvdb_names_ms:
+    type: mapserver
+    req:
+      layers: names #Skane_lan_ShapeNVDB_DKGatunamn
+      map: nvdb_names.map
       transparent: true
     supported_srs: ['EPSG:3857']
     supported_formats: ['image/png']
