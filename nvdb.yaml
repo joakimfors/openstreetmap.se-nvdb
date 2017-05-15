@@ -69,7 +69,7 @@ sources:
   nvdb_names_ms:
     type: mapserver
     req:
-      layers: names #Skane_lan_ShapeNVDB_DKGatunamn
+      layers: names
       map: nvdb_names.map
       transparent: true
     supported_srs: ['EPSG:3857']
