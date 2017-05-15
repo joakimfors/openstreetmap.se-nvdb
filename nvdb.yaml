@@ -41,7 +41,7 @@ sources:
   nvdb_speeds_ms:
     type: mapserver
     req:
-      layers: speeds,cycleways
+      layers: ways,cycleways,speeds
       map: nvdb_speeds.map
       transparent: true
     supported_srs: ['EPSG:3857']
@@ -55,7 +55,7 @@ sources:
   nvdb_speeds_alt_ms:
     type: mapserver
     req:
-      layers: speeds_alt,cycleways
+      layers: ways_alt,cycleways,speeds
       map: nvdb_speeds.map
       transparent: true
     supported_srs: ['EPSG:3857']

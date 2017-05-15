@@ -22,13 +22,36 @@ MAP
   LAYER
     NAME      "speeds"
     DATA      "ISA_20170425/ISA.shp"
-    STATUS    ON
+    STATUS    OFF
+    TYPE      LINE
+    PROJECTION
+      AUTO
+    END
+    MAXSCALEDENOM 12000
+    LABELITEM "HTHAST"
+    CLASS
+      NAME    "speed_text"
+      LABEL
+        COLOR 255 255 255
+        OUTLINECOLOR 48 48 48
+        MAXSCALEDENOM 12000
+        ANGLE FOLLOW
+        SIZE medium
+      END
+    END
+  END
+
+  LAYER
+    NAME      "ways"
+    DATA      "ISA_20170425/ISA.shp"
+    STATUS    OFF
     TYPE      LINE
     PROJECTION
       AUTO
     END
     SYMBOLSCALEDENOM 15000
     CLASSITEM "HTHAST"
+    LABELITEM "HTHAST"
     CLASS
       NAME    "5"
       EXPRESSION "5"
@@ -161,9 +184,9 @@ MAP
   END
 
   LAYER
-    NAME      "speeds_alt"
+    NAME      "ways_alt"
     DATA      "ISA_20170425/ISA.shp"
-    STATUS    ON
+    STATUS    OFF
     TYPE      LINE
     PROJECTION
       AUTO
