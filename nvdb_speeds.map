@@ -8,12 +8,12 @@ MAP
     "init=epsg:3857"
   END
 
-  CONFIG "MS_ERRORFILE" "mapserver.err"
+  CONFIG "MS_ERRORFILE" "mapserver_speeds.err"
   DEBUG 2
 
   WEB
     METADATA
-      "wms_title" "NVDB"
+      "wms_title" "NVDB speeds"
       "wms_onlineresource" "http://mapproxy.openstreetmap.se/service?"
       "wms_enable_request" "*"
     END
@@ -328,7 +328,7 @@ MAP
     NAME      "cycleways"
     DATA      "Cykelvagar_Sverige_170421/Cykelvagar_Sverige_170421.shp"
     EXTENT    277377.632000 6133739.032000 916327.324000 7537487.888000
-    STATUS    ON
+    STATUS    OFF
     TYPE      LINE
     PROJECTION
       AUTO
